@@ -1,5 +1,11 @@
 # bob-webinterface
 
+## Setup global dependencies (optional, to use global `vue` in bash)
+
+```
+sudo yarn global add @vue/cli
+```
+
 ## Project setup
 ```
 yarn install
