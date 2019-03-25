@@ -11,6 +11,8 @@ sudo yarn global add @vue/cli
 yarn install
 ```
 
+Rename `.env.example` to `.env` and add the URL of your FiPy (For internal testing you might use `http://home.vinzk.de`)
+
 ### Compiles and hot-reloads for development
 ```
 yarn run serve
