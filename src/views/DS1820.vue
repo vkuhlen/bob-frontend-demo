@@ -139,16 +139,6 @@ export default {
         setInterval( () => {
             this.load_temperatures();
         }, 2000); 
-    },
-    filters: {
-        toFixed(value, digits = 1) {
-            return (
-                !Number.isNaN(value) && Number.isFinite(value)
-                ) ? Number.parseFloat(value).toFixed(digits) : '';
-        },
-        ifEmpty(value, alternative = "") {
-            return (value) ? value : alternative;
-        }
     }
 }
 
