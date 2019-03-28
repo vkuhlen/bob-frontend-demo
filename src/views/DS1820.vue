@@ -53,7 +53,11 @@ export default {
                 t_i_5: '',
                 t_i_6: ''
             },
-            ds1820_config: {}
+            ds1820_config: {
+                pin: 0,
+                positions: {}
+            },
+            save_button_text: ''
         }
     },
     computed: {
@@ -73,17 +77,36 @@ export default {
                 '/api/config/sensors/ds1820'
             ].join('')).then(response => {
                 this.ds1820_config = response.data;
+                if (this.ds1820_config.hasOwnProperty('positions')) {
+                    Object.keys(this.ds1820_config.positions).forEach(key => {
+                            if (this.ds1820_positions.hasOwnProperty(key)) {
+                                this.$set(
+                                    this.ds1820_positions, 
+                                    key, 
+                                    this.ds1820_config.positions[key]
+                                );
+                            }
+                    });
+                }
+                else {
+                    this.$set(this.ds1820_config, 'positions', {});
+                }
+                this.save_button_text = 'Save configuration';
             }).catch(e => {
                 console.log(e);
             })
         },
         save_config(target) {
+            this.save_button_text = 'saving...';
+            Object.keys(this.ds1820_positions).forEach(key => {
+                this.$set(this.ds1820_config.positions, key, this.ds1820_positions[key]);
+            });
             axios.post([
                 process.env.VUE_APP_FIPY_URL,
                 '/api/config/sensors/ds1820'
-            ].join(''), this.ds1820_positions).then(response => {
+            ].join(''), this.ds1820_config).then(response => {
                 if (response.status == 200) {
-                    target.textContent == 'saved';
+                    this.save_button_text = 'saved';
                 }
             }).catch(e => {
                 console.log(e);
@@ -139,6 +162,14 @@ export default {
         setInterval( () => {
             this.load_temperatures();
         }, 2000); 
+    },
+    watch: {
+        ds1820_config: {
+            handler(val, oldVal) {
+                this.save_button_text = 'Save configuration';
+            },
+            deep: true
+        }
     }
 }
 
