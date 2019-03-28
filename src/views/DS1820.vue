@@ -93,10 +93,10 @@ export default {
                 }
                 this.save_button_text = 'Save configuration';
             }).catch(e => {
-                console.log(e);
+                console.error(e);
             })
         },
-        save_config(target) {
+        save_config() {
             this.save_button_text = 'saving...';
             Object.keys(this.ds1820_positions).forEach(key => {
                 this.$set(this.ds1820_config.positions, key, this.ds1820_positions[key]);
@@ -109,7 +109,7 @@ export default {
                     this.save_button_text = 'saved';
                 }
             }).catch(e => {
-                console.log(e);
+                console.error(e);
             })
         },
         load_temperatures() {
@@ -119,7 +119,7 @@ export default {
             ].join('')).then(response => {
                 this.temperatures = response.data;
             }).catch(e => {
-                console.log(e);
+                console.error(e);
             })
         },
         max_unassigned_temp() {
@@ -165,7 +165,7 @@ export default {
     },
     watch: {
         ds1820_config: {
-            handler(val, oldVal) {
+            handler() {
                 this.save_button_text = 'Save configuration';
             },
             deep: true
