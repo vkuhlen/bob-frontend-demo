@@ -1,17 +1,15 @@
 # bob-webinterface
 
-## Setup global dependencies (optional, to use global `vue` in bash)
+## Introduction
 
-```
-sudo yarn global add @vue/cli
-```
+This is a demo webinterface for the BOB project build with VueJS.
+To test it set up a FiPy with the [demo webserver](https://github.com/vkuhlen/bob-webserver-demo). Rename `.env.example` to `.env` and add the URL of your FiPy.
+If you are in the same LAN as your FiPy it should be available under the hostname 'http://espressif.lan'.
 
 ## Project setup
 ```
 yarn install
 ```
-
-Rename `.env.example` to `.env` and add the URL of your FiPy (For internal testing you might use `http://home.vinzk.de`)
 
 ### Compiles and hot-reloads for development
 ```
