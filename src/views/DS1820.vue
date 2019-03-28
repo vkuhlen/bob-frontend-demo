@@ -143,14 +143,14 @@ export default {
                 }
             }
         },
-        assign_position(button_name) {
-            if (this.ds1820.includes(this.ds1820_positions[button_name])) {
-                 this.$set(this.ds1820_positions, button_name, '');
+        assign_position(key) {
+            if (this.ds1820.includes(this.ds1820_positions[key])) {
+                 this.$set(this.ds1820_positions, key, '');
             }
             else {
                 let max_temp_key = this.max_unassigned_temp();
                 if (max_temp_key) {
-                     this.$set(this.ds1820_positions, button_name, max_temp_key);
+                     this.$set(this.ds1820_positions, key, max_temp_key);
                 }
             }
         }
