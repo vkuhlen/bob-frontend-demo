@@ -117,7 +117,7 @@ export default {
             })
         },
 
-        save_config(target) {
+        save_config() {
             this.save_button_text = 'saving...';
             axios.post([
                 process.env.VUE_APP_FIPY_URL,
@@ -146,7 +146,7 @@ export default {
 
     watch: {
         wlan_config: {
-            handler(val, oldVal) {
+            handler() {
                 this.save_button_text = 'Save configuration';
             },
             deep: true
