@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import DS1820 from './views/DS1820.vue'
 import ConfigWLan from './views/ConfigWLan.vue'
+import ConfigAccessPoint from './views/ConfigAccessPoint'
 
 Vue.use(Router)
 
@@ -24,6 +25,11 @@ export default new Router({
         path: '/config/wlan',
         name: 'wlan',
         component: ConfigWLan
+    },
+    {
+        path: '/config/ap',
+        name: 'ap',
+        component: ConfigAccessPoint
     }
   ]
 })
