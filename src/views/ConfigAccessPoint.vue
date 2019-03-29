@@ -2,7 +2,8 @@
     <div>
         <h1>Access point configuration</h1>
 
-        <div class="form">
+        <ConfigForm v-model="ap_config"
+                    config_url="/api/config/networking/accesspoint">
             <p>
                 <label for="enabled">Enabled:</label>
                 <input type="checkbox"
@@ -33,23 +34,23 @@
                        v-model="ap_config.password">
             </p>
             <p>
+                <label for="channel">Channel:</label>
                 <select name="channel"
                         v-model="ap_config.channel">
                     <option v-for="n in 6"
                             :key="n"
                             :value="n">
-                        n
+                        {{ n }}
                     </option>
                 </select>
             </p>
-        </div>
-        <button @click="save_config()">{{ save_button_text }}</button>
+        </ConfigForm>
     </div>
 </template>
 
 <script>
 
-import axios from 'axios'
+import ConfigForm from '@/components/ConfigForm'
 
 export default {
     data() {
@@ -59,47 +60,11 @@ export default {
                 encryption: '',
                 password: '',
                 channel: 1
-            },
-            save_button_text: ''
+            }
         }
     },
-    methods: {
-        load_config() {
-            axios.get([
-                process.env.VUE_APP_FIPY_URL,
-                '/api/config/networking/accesspoint'
-            ].join('')).then(response => {
-                this.ap_config = response.data;
-            }).catch(e => {
-                console.error(e);
-            })
-        },
-
-        save_config() {
-            this.save_button_text = 'saving...';
-            axios.post([
-                process.env.VUE_APP_FIPY_URL,
-                '/api/config/networking/accesspoint'
-            ].join(''), this.ap_config).then(response => {
-                if (response.status == 200) {
-                    this.save_button_text = 'saved';
-                }
-            }).catch(e => {
-                console.error(e);
-            })
-        },
-    },
-    created() {
-        this.load_config();
-    },
-
-    watch: {
-        ap_config: {
-            handler() {
-                this.save_button_text = 'Save configuration';
-            },
-            deep: true
-        }
+    components: {
+        ConfigForm
     }
 }
 
