@@ -2,7 +2,8 @@
     <div>
         <h1>WLan configuration</h1>
 
-        <div class="form">
+        <ConfigForm v-model="wlan_config"
+                    config_url="/api/config/networking/wlan">
             <p>
                 <label for="enabled">Enabled:</label>
                 <input type="checkbox"
@@ -43,14 +44,17 @@
                        v-model="wlan_config.password">
             </p>
             <p>
-                <input type="radio"
-                       name="ifconfig"
-                       value="dhcp"
-                       v-model="wlan_config.ifconfig"> DHCP
-                <input type="radio"
-                       name="ifconfig"
-                       value="static"
-                       v-model="wlan_config.ifconfig"> Static
+                <label for="ifconfig">IP Address:</label>
+                <span>
+                    <input type="radio"
+                        name="ifconfig"
+                        value="dhcp"
+                        v-model="wlan_config.ifconfig"> DHCP
+                    <input type="radio"
+                        name="ifconfig"
+                        value="static"
+                        v-model="wlan_config.ifconfig"> Static
+                </span>
             </p>
             <div id="ipv4_static"
                 v-if="wlan_config.ifconfig === 'static'">
@@ -79,16 +83,17 @@
                            v-model="wlan_config.dns">
                 </p>
             </div>
-        </div>
-        <button @click="save_config()">{{ save_button_text }}</button>
+        </ConfigForm>
     </div>
 </template>
 
 <script>
 
 import axios from 'axios'
+import ConfigForm from '@/components/ConfigForm'
 
 export default {
+    name: 'ConfigWLan',
     data() {
         return {
             wlan_config: {
@@ -101,56 +106,21 @@ export default {
                 subnet: '',
                 gateway: '',
                 dns: ''
-            },
-            save_button_text: ''
+            }
         }
     },
     methods: {
-        load_config() {
-            axios.get([
-                process.env.VUE_APP_FIPY_URL,
-                '/api/config/networking/wlan'
-            ].join('')).then(response => {
-                this.wlan_config = response.data;
-            }).catch(e => {
-                console.log(e);
-            })
-        },
-
-        save_config() {
-            this.save_button_text = 'saving...';
-            axios.post([
-                process.env.VUE_APP_FIPY_URL,
-                '/api/config/networking/wlan'
-            ].join(''), this.wlan_config).then(response => {
-                if (response.status == 200) {
-                    this.save_button_text = 'saved';
-                }
-            }).catch(e => {
-                console.log(e);
-            })
-        },
-
         update_sec() {
             let ap = this.wlan_config.available.filter(ap => {
                 return ap.ssid === this.wlan_config.ssid;
             });
             if (ap.length > 0) {
-                this.wlan_config.sec = ap[0].sec;
+                this.$set(this.wlan_config, sec, ap[0].sec);
             }
         }
     },
-    created() {
-        this.load_config();
-    },
-
-    watch: {
-        wlan_config: {
-            handler() {
-                this.save_button_text = 'Save configuration';
-            },
-            deep: true
-        }
+    components: {
+        ConfigForm
     }
 }
 

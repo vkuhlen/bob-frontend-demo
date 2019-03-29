@@ -15,7 +15,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #444444;
-  width: 100%;
+  width: 90%;
   max-width: 500px;
   margin: auto;
 }
@@ -25,7 +25,7 @@
 }
 
 #nav {
-  padding: 30px;
+  padding: 10px;
 }
 
 #nav a {

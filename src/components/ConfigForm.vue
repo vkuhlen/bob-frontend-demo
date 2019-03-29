@@ -1,10 +1,10 @@
 <template>
-    <div id="config-form">
+    <div id="config-form" class="flex-form">
         <slot></slot>
-        <div class="submit">
+        <p class="submit">
             <button @click="save_config()">{{ save_button_text }}</button>
             <button @click="load_config()">Reset</button>
-        </div>
+        </p>
     </div>
 </template>
 
@@ -72,8 +72,49 @@ export default {
 
 <style>
 
-.submit button {
-    margin: 1em 1em;
+.submit {
+    padding-left: 25%;
+    flex: 1;
+    justify-content: space-between !important;
+}
+
+.flex-form {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: column wrap;
+}
+
+.flex-form p {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: baseline;
+}​
+
+.flex-form input,
+.flex-form select,
+.flex-form span {
+    flex: 2 1 50%;
+}
+
+.flex-form span {
+    display: flex;
+    justify-content: space-evenly;
+    flex: 1 1 50%;
+    align-items: baseline;
+}
+
+.flex-form label {
+    flex: 0 0 20%;
+    min-width: 90px;
+}
+
+.flex-form input[type="checkbox"],
+.flex-form input[type="radio"] {
+    position: relative;
+    top: 2px;
 }
 
 </style>
