@@ -14,7 +14,7 @@
                 <label for="ssid">SSID:</label>
                 <select name="ssid"
                         v-model="wlan_config.ssid"
-                        @change="update_sec()">
+                        @change="update_encryption()">
                     <option disabled
                             value="">
                         Please select an SSID
@@ -109,12 +109,12 @@ export default {
         }
     },
     methods: {
-        update_sec() {
+        update_encryption() {
             let ap = this.wlan_config.available.filter(ap => {
                 return ap.ssid === this.wlan_config.ssid;
             });
             if (ap.length > 0) {
-                this.$set(this.wlan_config, sec, ap[0].sec);
+                this.$set(this.wlan_config, 'encryption', ap[0].sec);
             }
         }
     },

@@ -30,7 +30,6 @@
 <style>
 
 .home ul {
-    width: 40vw;
     padding: 0;
     margin: auto;
 }
