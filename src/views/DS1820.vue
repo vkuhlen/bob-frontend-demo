@@ -32,9 +32,9 @@
 <script>
 
 import axios from 'axios'
-import ConfigForm from '@/components/ConfigForm.vue'
-import SensorsDS1820Available from '@/components/SensorsDS1820Available.vue'
-import SensorsDS1820Positions from '@/components/SensorsDS1820Positions.vue'
+import ConfigForm from '@/components/ConfigForm'
+import SensorsDS1820Available from '@/components/SensorsDS1820Available'
+import SensorsDS1820Positions from '@/components/SensorsDS1820Positions'
 
 export default {
     name: 'ds1820',
