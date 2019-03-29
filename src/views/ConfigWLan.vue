@@ -89,7 +89,6 @@
 
 <script>
 
-import axios from 'axios'
 import ConfigForm from '@/components/ConfigForm'
 
 export default {
