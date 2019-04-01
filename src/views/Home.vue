@@ -23,6 +23,11 @@
                     DS1820
                 </router-link>
             </li>
+            <li>
+                <router-link to="/sensors/hx711">
+                    HX711
+                </router-link>
+            </li>
         </ul>
     </div>
 </template>
