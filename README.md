@@ -25,7 +25,8 @@ ip addr | grep 'inet '
 ```
 
 Then type
-```nmap -sn [YOUR IP ADDRESS]/24
+```
+nmap -sn [YOUR IP ADDRESS]/24
 ```
 This will display all devices in your LAN. If one device is called `espressif` it is your FiPy. If there is no such device listed you have to try all IP addresses.
 
