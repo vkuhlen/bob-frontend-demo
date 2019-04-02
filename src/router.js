@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import DS1820 from './views/DS1820.vue'
-import HX711 from './views/HX711.vue'
+import SensorsDS1820 from './views/SensorsDS1820.vue'
+import SensorsHX711Calibration from './views/SensorsHX711Calibration.vue'
 import ConfigWLan from './views/ConfigWLan.vue'
 import ConfigAccessPoint from './views/ConfigAccessPoint'
 
@@ -20,12 +20,12 @@ export default new Router({
     {
         path: '/sensors/ds1820',
         name: 'ds1820',
-        component: DS1820
+        component: SensorsDS1820
     },
     {
-        path: '/sensors/hx711',
-        name: 'hx711',
-        component: HX711
+        path: '/sensors/hx711/calibrate',
+        name: 'hx711calibration',
+        component: SensorsHX711Calibration
     },
     {
         path: '/config/wlan',
