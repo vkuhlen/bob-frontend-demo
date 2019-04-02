@@ -96,7 +96,7 @@ export default {
     flex-flow: row wrap;
     justify-content: flex-start;
     align-items: baseline;
-}​
+}
 
 .flex-form input,
 .flex-form select,
