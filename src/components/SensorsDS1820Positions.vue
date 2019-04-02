@@ -40,6 +40,7 @@ export default {
     padding: 3vh 0;
     display: flex;
     justify-content: space-around;
+    flex-flow: row wrap;
 }
 
 button.unassigned {

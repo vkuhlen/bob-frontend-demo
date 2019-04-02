@@ -146,6 +146,8 @@ export default {
         width: 14vw;
         height: 14vw;
         border-radius: 7vw;
+        min-width: 3em;
+        min-height: 3em;
     }
 }
 
