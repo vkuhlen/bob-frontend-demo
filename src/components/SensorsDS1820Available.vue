@@ -43,15 +43,15 @@ export default {
         }
     },
     watch: {
-        temperatures: {
-            handler() {
-                let sensor = this.max_unassigned_temp();
-                if (sensor) {
-                    this.$emit('change', sensor);
-                }
-            },
-            deep: true
-        },
+        // temperatures: {
+        //     handler() {
+        //         let sensor = this.max_unassigned_temp();
+        //         if (sensor) {
+        //             this.$emit('change', sensor);
+        //         }
+        //     },
+        //     deep: true
+        // },
         unassigned_ds1820: {
             handler() {
                 console.log(this.unassigned_ds1820.length);
