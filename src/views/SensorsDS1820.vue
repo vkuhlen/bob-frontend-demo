@@ -5,16 +5,22 @@
                 config_url="/api/config/sensors/ds1820"
                 buttons_visible="false">
         <p>
+            <label for="enabled">Enabled:</label>
+            <input type="checkbox"
+                   name="enabled"
+                   v-model="ds1820_config.enabled">
+        </p>
+        <p>
             <label for="pin">Select Pin</label>
             <ConfigPinSelect v-model="ds1820_config.pin" />
         </p>
         <div class="description">
             Please assign each temperature sensor to a position.<br>
-            Below you see a list of circles, each represents the position of one sensor.<br>
+            Below you see two sets of circles. The red/green circles represent the positions of your sensors, the grey circles below are the connected DS1820.<br>
             Follow these steps for each sensor:
             <ol>
                 <li>
-                    Grab the metal part of a sensor and hold it in your hand for at least 5 seconds.
+                    Grab the metal part of a sensor. Select the grey circle with the rising temperature.
                 </li>
                 <li>
                     Click on the circle representing the position of the sensor you hold.
@@ -56,6 +62,7 @@ export default {
             selected_ds1820: '',
             temperatures: {},
             ds1820_config: {
+                enabled: true,
                 pin: 'P1',
                 positions: {}
             },
