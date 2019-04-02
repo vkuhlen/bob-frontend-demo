@@ -28,6 +28,11 @@
                     HX711
                 </router-link>
             </li>
+            <li>
+                <router-link to="/sensors/bme280">
+                    BME280
+                </router-link>
+            </li>
         </ul>
     </div>
 </template>
