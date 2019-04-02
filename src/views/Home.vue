@@ -6,12 +6,12 @@
         <h3>Networking</h3>
         <ul>
             <li>
-                <router-link to="/config/ap">
+                <router-link to="/networking/ap">
                     Access Point
                 </router-link>
             </li>
             <li>
-                <router-link to="/config/wlan">
+                <router-link to="/networking/wlan">
                     WLan
                 </router-link>
             </li>

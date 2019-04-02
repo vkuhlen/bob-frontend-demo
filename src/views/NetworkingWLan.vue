@@ -92,7 +92,7 @@
 import ConfigForm from '@/components/ConfigForm'
 
 export default {
-    name: 'ConfigWLan',
+    name: 'NetworkingWLan',
     data() {
         return {
             wlan_config: {

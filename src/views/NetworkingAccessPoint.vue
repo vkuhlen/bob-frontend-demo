@@ -53,6 +53,7 @@
 import ConfigForm from '@/components/ConfigForm'
 
 export default {
+    name: 'NetworkingAccesspoint',
     data() {
         return {
             ap_config: {

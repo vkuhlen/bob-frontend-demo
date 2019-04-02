@@ -9,8 +9,8 @@ import SensorsBME280 from './views/SensorsBME280'
 
 import TelemetryBEEP from './views/TelemetryBEEP'
 
-import ConfigWLan from './views/ConfigWLan'
-import ConfigAccessPoint from './views/ConfigAccessPoint'
+import NetworkingWLan from './views/NetworkingWLan'
+import NetworkingAccessPoint from './views/NetworkingAccessPoint'
 
 Vue.use(Router)
 
@@ -44,14 +44,14 @@ export default new Router({
         component: SensorsBME280
     },
     {
-        path: '/config/wlan',
+        path: '/networking/wlan',
         name: 'wlan',
-        component: ConfigWLan
+        component: NetworkingWLan
     },
     {
-        path: '/config/ap',
+        path: '/networking/ap',
         name: 'ap',
-        component: ConfigAccessPoint
+        component: NetworkingAccessPoint
     },
     {
         path: '/telemetry/beep',
