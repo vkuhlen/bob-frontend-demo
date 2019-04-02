@@ -105,7 +105,7 @@ export default {
             this.step = 0;
 
             this.$refs.configform.save_config();
-            this.$router.push('/');
+            this.$router.push('/sensors/hx711');
         }
     },
     components: {
