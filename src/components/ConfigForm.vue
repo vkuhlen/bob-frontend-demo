@@ -1,7 +1,8 @@
 <template>
     <div id="config-form" class="flex-form">
         <slot></slot>
-        <p class="submit">
+        <p class="submit"
+           v-if="buttons_visible">
             <button @click="save_config()">{{ save_button_text }}</button>
             <button @click="load_config()">Reset</button>
         </p>
@@ -12,12 +13,16 @@
 import axios from 'axios'
 
 export default {
-    name: 'config',
+    name: 'ConfigForm',
     model: {
         prop: 'config',
         event: 'change'
     },
     props: {
+        buttons_visible: {
+            default: true,
+            type: Boolean
+        },
         config: Object,
         config_url: String
     },
@@ -87,10 +92,10 @@ export default {
 }
 
 .flex-form p {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  align-items: baseline;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: baseline;
 }​
 
 .flex-form input,
