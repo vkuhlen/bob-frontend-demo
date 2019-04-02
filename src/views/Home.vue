@@ -34,6 +34,15 @@
                 </router-link>
             </li>
         </ul>
+
+        <h3>Telemetry</h3>
+        <ul>
+            <li>
+                <router-link to="/telemetry/beep">
+                    BEEP
+                </router-link>
+            </li>
+        </ul>
     </div>
 </template>
 

@@ -7,6 +7,8 @@ import SensorsHX711 from './views/SensorsHX711'
 import SensorsHX711Calibration from './views/SensorsHX711Calibration'
 import SensorsBME280 from './views/SensorsBME280'
 
+import TelemetryBEEP from './views/TelemetryBEEP'
+
 import ConfigWLan from './views/ConfigWLan'
 import ConfigAccessPoint from './views/ConfigAccessPoint'
 
@@ -50,6 +52,11 @@ export default new Router({
         path: '/config/ap',
         name: 'ap',
         component: ConfigAccessPoint
+    },
+    {
+        path: '/telemetry/beep',
+        name: 'beep',
+        component: TelemetryBEEP
     }
   ]
 })
