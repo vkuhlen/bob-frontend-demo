@@ -3,6 +3,7 @@
         <h1>Scale</h1>
         <ConfigForm v-model="hx711_config"
                     config_url="/api/config/sensors/hx711"
+                    :buttons_visible=false
                     ref="configform">
             <div v-if="step===0"
                  class="flex-form">
@@ -18,9 +19,9 @@
                            step="0.1"
                            v-model.number="cal_weight">
                 </p>
-                <p class="alt-submit">
-                        <button @click="$router.go(-1)">Back</button>
+                <p class="submit">
                         <button @click="load_weight(do_step_1)">Continue</button>
+                        <button @click="$router.go(-1)">Back</button>
                 </p>
             </div>
 
@@ -38,9 +39,9 @@
                         step="0.1"
                         v-model.number="cal_no_weight">
                 </p>
-                <p class="alt-submit">
-                    <button @click="step=0">Back</button>
+                <p class="submit">
                     <button @click="load_weight(do_step_2)">Continue</button>
+                    <button @click="step=0">Back</button>
                 </p>
             </div>
         </ConfigForm>
@@ -116,16 +117,8 @@ export default {
 
 <style>
 
-.submit {
-    display: none !important;
-}
-
 .flex-form p {
     justify-content: space-around !important;
-}
-
-.alt-submit {
-    margin: 0 30%;
 }
 
 </style>

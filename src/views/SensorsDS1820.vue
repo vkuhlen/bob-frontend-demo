@@ -1,19 +1,30 @@
 <template>
   <div class="ds1820">
     <h1>Configure DS1820</h1>
-    <div class="description">
-    Please assign each temperature sensor to a position.<br>
-    Below you see a list of circles, each represents the position of one sensor.<br>
-    Follow these steps for each sensor:
-    <ol>
-        <li>Grab the metal part of a sensor and hold it in your hand for at least 5 seconds.</li>
-        <li>Click on the circle representing the position of the sensor you hold.</li>
-        <li>Now the circle should be colored green and show the temperature.</li>
-    </ol>
-    Tip: By clicking a circle with an assigned sensor the assignment can be undone.
-    </div>
     <ConfigForm v-model="ds1820_config"
-                config_url="/api/config/sensors/ds1820">
+                config_url="/api/config/sensors/ds1820"
+                buttons_visible="false">
+        <p>
+            <label for="pin">Select Pin</label>
+            <ConfigPinSelect v-model="ds1820_config.pin" />
+        </p>
+        <div class="description">
+            Please assign each temperature sensor to a position.<br>
+            Below you see a list of circles, each represents the position of one sensor.<br>
+            Follow these steps for each sensor:
+            <ol>
+                <li>
+                    Grab the metal part of a sensor and hold it in your hand for at least 5 seconds.
+                </li>
+                <li>
+                    Click on the circle representing the position of the sensor you hold.
+                </li>
+                <li>
+                    Now the circle should be colored green and show the temperature.
+                </li>
+            </ol>
+            Tip: By clicking a circle with an assigned sensor the assignment can be undone.
+        </div>
         <SensorsDS1820Positions :ds1820_positions="ds1820_config.positions"
                                 :temperatures="temperatures_by_position"
                                 @assign="assign_position" />
@@ -33,6 +44,7 @@
 
 import axios from 'axios'
 import ConfigForm from '@/components/ConfigForm'
+import ConfigPinSelect from '@/components/ConfigPinSelect'
 import SensorsDS1820Available from '@/components/SensorsDS1820Available'
 import SensorsDS1820Positions from '@/components/SensorsDS1820Positions'
 
@@ -115,6 +127,7 @@ export default {
 
     components: {
         ConfigForm,
+        ConfigPinSelect,
         SensorsDS1820Available,
         SensorsDS1820Positions
     }
