@@ -101,7 +101,8 @@ export default {
 .flex-form input,
 .flex-form select,
 .flex-form span {
-    flex: 2 1 50%;
+    flex: 1 1 40%;
+    max-width: 50%;
 }
 
 .flex-form span {
