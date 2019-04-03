@@ -37,7 +37,7 @@
                 <label for="channel">Channel:</label>
                 <select name="channel"
                         v-model="ap_config.channel">
-                    <option v-for="n in 6"
+                    <option v-for="n in 11"
                             :key="n"
                             :value="n">
                         {{ n }}
