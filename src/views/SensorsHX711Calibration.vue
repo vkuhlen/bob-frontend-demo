@@ -84,28 +84,42 @@ export default {
         },
 
         do_step_1(weight) {
-            this.step = 1;
-            this.measured_weight = weight;
+            if (Number.parseFloat(weight)) {
+                this.step = 1;
+                this.measured_weight = Number.parseFloat(weight);
+            }
+            else {
+                this.load_weight(this.do_step_1);
+            }
         },
 
         do_step_2(weight) {
-            this.$set(
-                this.hx711_config,
-                'calibration_factor',
-                (Number.parseFloat(this.measured_weight) - Number.parseFloat(weight))
-                / (Number.parseFloat(this.cal_weight) - Number.parseFloat(this.cal_no_weight))
-            );
-            
-            this.$set(
-                this.hx711_config,
-                'tare_offset',
-                Number.parseFloat(this.measured_weight)
-                - this.hx711_config.calibration_factor * Number.parseFloat(this.cal_weight)
-            );
-            this.step = 0;
+            if (Number.parseFloat(weight)) {
+                this.step = 1;
+                this.measured_weight = Number.parseFloat(weight);
 
-            this.$refs.configform.save_config();
-            this.$router.push('/sensors/hx711');
+                this.$set(
+                    this.hx711_config,
+                    'calibration_factor',
+                    (Number.parseFloat(this.measured_weight) - Number.parseFloat(weight))
+                    / (Number.parseFloat(this.cal_weight) - Number.parseFloat(this.cal_no_weight))
+                );
+                
+                this.$set(
+                    this.hx711_config,
+                    'tare_offset',
+                    Number.parseFloat(this.measured_weight)
+                    - this.hx711_config.calibration_factor * Number.parseFloat(this.cal_weight)
+                );
+                this.step = 0;
+
+                this.$refs.configform.save_config();
+                this.$router.push('/sensors/hx711');
+
+            }
+            else {
+                this.load_weight(this.do_step_2);
+            }
         }
     },
     components: {
