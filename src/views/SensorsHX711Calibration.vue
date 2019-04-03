@@ -93,7 +93,7 @@ export default {
                 this.hx711_config,
                 'calibration_factor',
                 (Number.parseFloat(this.measured_weight) - Number.parseFloat(weight))
-                / (Number.parseFloat(this.cal_weight) - Number.parseFloat(this.cal_weight))
+                / (Number.parseFloat(this.cal_weight) - Number.parseFloat(this.cal_no_weight))
             );
             
             this.$set(
