@@ -43,6 +43,15 @@
                 </router-link>
             </li>
         </ul>
+
+        <h3>System</h3>
+        <ul>
+            <li>
+                <router-link to="/restart">
+                    Restart
+                </router-link>
+            </li>
+        </ul>
     </div>
 </template>
 

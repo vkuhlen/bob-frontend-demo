@@ -12,6 +12,8 @@ import TelemetryBEEP from './views/TelemetryBEEP'
 import NetworkingWLan from './views/NetworkingWLan'
 import NetworkingAccessPoint from './views/NetworkingAccessPoint'
 
+import Restart from './views/Restart.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -57,6 +59,11 @@ export default new Router({
         path: '/telemetry/beep',
         name: 'beep',
         component: TelemetryBEEP
+    },
+    {
+        path: '/restart',
+        name: 'restart',
+        component: Restart
     }
   ]
 })
