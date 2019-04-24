@@ -95,21 +95,25 @@ export default {
 
         do_step_2(weight) {
             if (Number.parseFloat(weight)) {
-                this.step = 1;
-                this.measured_weight = Number.parseFloat(weight);
-
-                this.$set(
-                    this.hx711_config,
-                    'calibration_factor',
+    
+                let calibration_factor = (
                     (Number.parseFloat(this.measured_weight) - Number.parseFloat(weight))
                     / (Number.parseFloat(this.cal_weight) - Number.parseFloat(this.cal_no_weight))
                 );
+                this.$set(
+                    this.hx711_config,
+                    'calibration_factor',
+                    calibration_factor
+                );
                 
+                let tare_offset = (
+                    Number.parseFloat(this.measured_weight)
+                    - this.hx711_config.calibration_factor * Number.parseFloat(this.cal_weight)
+                ); 
                 this.$set(
                     this.hx711_config,
                     'tare_offset',
-                    Number.parseFloat(this.measured_weight)
-                    - this.hx711_config.calibration_factor * Number.parseFloat(this.cal_weight)
+                    tare_offset
                 );
                 this.step = 0;
 
